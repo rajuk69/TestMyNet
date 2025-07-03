@@ -1,4 +1,72 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TestMyNet - Speed Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/gh/librespeed/speedtest/speedtest.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fa;
+      text-align: center;
+      padding: 50px 20px;
+      color: #333;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    button {
+      background: #007bff;
+      border: none;
+      color: white;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #results {
+      margin-top: 40px;
+      font-size: 1.4rem;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>TestMyNet - Internet Speed Test</h1>
+  <button onclick="startTest()">Start Test</button>
+  <div id="results"></div>
+
+  <script>
+    // Public LibreSpeed server URL(s)
+    const speedtest = new Speedtest({
+      urls: ["https://cache1.librespeed.org/"]
+    });
+
+    function startTest() {
+      const results = document.getElementById('results');
+      results.textContent = "Testing... Please wait.";
+
+      speedtest.onupdate = data => {
+        results.textContent = `Download: ${data.dl?.toFixed(2)} Mbps | Upload: ${data.ul?.toFixed(2)} Mbps | Ping: ${data.ping?.toFixed(0)} ms`;
+      };
+
+      speedtest.onend = () => {
+        results.textContent += " — Test completed.";
+      };
+
+      speedtest.start();
+    }
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Test My Net</title>
