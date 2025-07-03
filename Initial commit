@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TestMyNet - Speed Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/gh/librespeed/speedtest/speedtest.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f6fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007bff;
+      padding: 20px;
+      color: white;
+      font-size: 1.5rem;
+    }
+    #results {
+      margin-top: 30px;
+    }
+    .result-box {
+      margin: 10px auto;
+      padding: 15px;
+      background: white;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>TestMyNet - Real Speed Test</header>
+
+  <main>
+    <p>Click the button below to test your internet speed:</p>
+    <button onclick="startSpeedTest()">Start Test</button>
+
+    <div id="results" style="display: none;">
+      <div class="result-box">Download: <span id="download">--</span> Mbps</div>
+      <div class="result-box">Upload: <span id="upload">--</span> Mbps</div>
+      <div class="result-box">Ping: <span id="ping">--</span> ms</div>
+    </div>
+  </main>
+
+  <script>
+    let s = new Speedtest();
+
+    function startSpeedTest() {
+      document.getElementById("results").style.display = "block";
+      document.getElementById("download").textContent = "...";
+      document.getElementById("upload").textContent = "...";
+      document.getElementById("ping").textContent = "...";
+
+      s.onupdate = data => {
+        if (data.dl) document.getElementById("download").textContent = (data.dl).toFixed(2);
+        if (data.ul) document.getElementById("upload").textContent = (data.ul).toFixed(2);
+        if (data.ping) document.getElementById("ping").textContent = data.ping.toFixed(0);
+      };
+
+      s.onend = () => {
+        console.log("Speed test finished.");
+      };
+
+      s.start();
+    }
+  </script>
+
+</body>
+</html>
