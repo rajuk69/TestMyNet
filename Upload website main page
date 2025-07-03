@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TestMyNet - আপনার নেট স্পিড টেস্ট সাইট</title>
+    <style>
+        body {
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0; padding: 0;
+            color: #222;
+        }
+        header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #155ab6;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #0d3f78;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #1a73e8;
+        }
+        button {
+            background-color: #1a73e8;
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #155ab6;
+        }
+        form label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        TestMyNet - আপনার নেট স্পিড টেস্ট সাইট
+    </header>
+    <nav>
+        <a href="#home">হোম</a>
+        <a href="#about">আমাদের সম্পর্কে</a>
+        <a href="#services">সেবা</a>
+        <a href="#contact">যোগাযোগ</a>
+    </nav>
+    <main>
+        <section id="home">
+            <h1>স্বাগতম TestMyNet-এ!</h1>
+            <p>আপনার ইন্টারনেট স্পিড পরীক্ষার জন্য এখানে আসুন। দ্রুত ও সঠিকভাবে আপনার নেট স্পিড জানুন।</p>
+            <button onclick="alert('নেট স্পিড পরীক্ষা ফিচার শীঘ্রই আসছে!')">নেট স্পিড পরীক্ষা করুন</button>
+        </section>
+        <section id="about">
+            <h2>আমাদের সম্পর্কে</h2>
+            <p>TestMyNet একটি সহজ এবং নির্ভরযোগ্য প্ল্যাটফর্ম যেখানে আপনি দ্রুত আপনার ইন্টারনেট স্পিড পরীক্ষা করতে পারবেন। আমাদের লক্ষ্য সঠিক তথ্য দিয়ে আপনার অভিজ্ঞতা উন্নত করা।</p>
+        </section>
+        <section id="services">
+            <h2>আমাদের সেবা</h2>
+            <ul>
+                <li>দ্রুত নেট স্পিড টেস্ট</li>
+                <li>স্পিড বিশ্লেষণ রিপোর্ট</li>
+                <li>সহজ ও ব্যবহার বান্ধব ইন্টারফেস</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>যোগাযোগ করুন</h2>
+            <form onsubmit="event.preventDefault(); alert('আপনার মেসেজ গ্রহণ করা হয়েছে, ধন্যবাদ!'); this.reset();">
+                <label for="name">নাম:</label>
+                <input type="text" id="name" name="name" placeholder="আপনার নাম লিখুন" required />
+                <label for="email">ইমেইল:</label>
+                <input type="email" id="email" name="email" placeholder="আপনার ইমেইল লিখুন" required />
+                <label for="message">মেসেজ:</label>
+                <textarea id="message" name="message" rows="4" placeholder="আপনার মেসেজ লিখুন" required></textarea>
+                <button type="submit">পাঠান</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 TestMyNet. সর্বসত্ত্ব সংরক্ষিত।
+    </footer>
+</body>
+</html>
