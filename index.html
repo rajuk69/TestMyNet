@@ -58,7 +58,102 @@
 
       speedtest.onend = () => {
         resultsDiv.textContent += ' - Test completed';
-      };
+      };<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestMyNet - Internet Speed Test</title>
+  <script src="https://cdn.jsdelivr.net/gh/librespeed/speedtest/speedtest.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fa;
+      margin: 0; padding: 0;
+      text-align: center;
+      color: #333;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 30px 0;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    main {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #results {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      min-height: 40px;
+    }
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+      background: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  TestMyNet - Internet Speed Test
+</header>
+
+<main>
+  <p>Click the button below to check your internet speed instantly.</p>
+  <button onclick="startSpeedTest()">Start Speed Test</button>
+  <div id="results"></div>
+</main>
+
+<footer>
+  &copy; 2025 TestMyNet. All rights reserved.
+</footer>
+
+<script>
+  const speedtest = new Speedtest();
+
+  function startSpeedTest() {
+    const results = document.getElementById('results');
+    results.textContent = 'Testing... Please wait.';
+    
+    speedtest.onupdate = data => {
+      results.textContent = `Download: ${data.dl?.toFixed(2)} Mbps | Upload: ${data.ul?.toFixed(2)} Mbps | Ping: ${data.ping?.toFixed(0)} ms`;
+    };
+
+    speedtest.onend = () => {
+      results.textContent += ' — Test completed.';
+    };
+
+    speedtest.start();
+  }
+</script>
+
+</body>
+</html>
+
 
       speedtest.start();
     }
