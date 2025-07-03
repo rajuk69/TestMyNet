@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TestMyNet - Speed Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/gh/librespeed/speedtest/speedtest.min.js"></script>
+  <style>
+    body { text-align:center; font-family:Arial,sans-serif; background:#f4f6fa; padding:20px; }
+    button { padding:15px 30px; font-size:1.1rem; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; }
+    button:hover { background:#0056b3; }
+    .result { margin-top:20px; font-size:1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>TestMyNet Speed Test</h1>
+  <button onclick="runTest()">Start Test</button>
+  <div id="res" class="result"></div>
+
+  <script>
+    let st = new Speedtest();
+    function runTest() {
+      document.getElementById('res').innerHTML = 'Testing...';
+      st.onupdate = d => {
+        document.getElementById('res').innerHTML = `DL: ${d.dl?.toFixed(2)} Mbps • UL: ${d.ul?.toFixed(2)} Mbps • Ping: ${d.ping?.toFixed(0)} ms`;
+      };
+      st.start();
+    }
+  </script>
+</body>
+</html>
