@@ -8,3 +8,60 @@
     <p>This is your first website on GitHub Pages.</p>
   </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TestMyNet - Speed Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/gh/librespeed/speedtest/speedtest.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fa;
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #results {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>TestMyNet Speed Test</h1>
+  <button onclick="startTest()">Start Test</button>
+  <div id="results"></div>
+
+  <script>
+    let speedtest = new Speedtest();
+
+    function startTest() {
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.textContent = 'Testing...';
+
+      speedtest.onupdate = data => {
+        resultsDiv.textContent = `Download: ${data.dl?.toFixed(2)} Mbps | Upload: ${data.ul?.toFixed(2)} Mbps | Ping: ${data.ping?.toFixed(0)} ms`;
+      };
+
+      speedtest.onend = () => {
+        resultsDiv.textContent += ' - Test completed';
+      };
+
+      speedtest.start();
+    }
+  </script>
+</body>
+</html>
